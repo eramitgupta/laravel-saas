@@ -7,15 +7,15 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
-createServer((page) =>
+createServer(page =>
     createInertiaApp({
         page,
         render: renderToString,
-        title: (title) => `${title} - ${appName}`,
-        resolve: (name) =>
+        title: title => `${title} - ${appName}`,
+        resolve: name =>
             resolvePageComponent(
                 `./Pages/${name}.vue`,
-                import.meta.glob('./Pages/**/*.vue'),
+                import.meta.glob('./Pages/**/*.vue')
             ),
         setup({ App, props, plugin }) {
             return createSSRApp({ render: () => h(App, props) })
@@ -25,5 +25,5 @@ createServer((page) =>
                     location: new URL(page.props.ziggy.location),
                 });
         },
-    }),
+    })
 );

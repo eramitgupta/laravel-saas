@@ -36,7 +36,7 @@ watch(
                 showSlot.value = false;
             }, 200);
         }
-    },
+    }
 );
 
 const close = () => {
@@ -45,7 +45,7 @@ const close = () => {
     }
 };
 
-const closeOnEscape = (e) => {
+const closeOnEscape = e => {
     if (e.key === 'Escape') {
         e.preventDefault();
 
